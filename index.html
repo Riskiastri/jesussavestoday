@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jesus Saves Today | Bio Link & Multi-Affiliate Hub</title>
+    <title id="docTitle">Jesus Saves Today | Bio Link & Multi-Affiliate Hub</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom Styles -->
-    <style>
+    <!-- Custom Styles Dynamic Injector -->
+    <style id="dynamicThemeStyles">
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --bg-color: #090a0f;
+            --text-color: #f3f4f6;
+            --accent-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 70%, #aa771c 100%);
+            --accent-color: #d4af37;
+            --card-bg: rgba(22, 27, 38, 0.75);
+            --card-border: rgba(212, 175, 55, 0.2);
+        }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #090a0f;
-            color: #f3f4f6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .font-serif-title {
@@ -25,28 +35,29 @@
         }
 
         .gold-gradient {
-            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .gold-bg {
-            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 70%, #aa771c 100%);
+            background: var(--accent-gradient);
         }
 
         .glass-card {
-            background: rgba(22, 27, 38, 0.75);
+            background: var(--card-bg);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
         }
 
         .glass-card:hover {
-            border-color: rgba(212, 175, 55, 0.4);
+            border-color: var(--accent-color);
             box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.15);
         }
 
         .active-tab {
-            background: linear-gradient(135deg, #bf953f 0%, #aa771c 100%);
+            background: var(--accent-gradient);
             color: #000;
             font-weight: 700;
         }
@@ -55,42 +66,42 @@
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #090a0f;
+            background: var(--bg-color);
         }
         ::-webkit-scrollbar-thumb {
             background: #374151;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #bf953f;
+            background: var(--accent-color);
         }
     </style>
 </head>
 <body class="min-h-screen pb-16 relative selection:bg-amber-500 selection:text-black">
 
     <!-- Glowing Background Effects -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-amber-600/10 blur-[140px] pointer-events-none rounded-full"></div>
-    <div class="fixed bottom-0 left-1/4 w-96 h-96 bg-yellow-500/5 blur-[120px] pointer-events-none rounded-full"></div>
+    <div id="glowOrb1" class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-amber-600/10 blur-[140px] pointer-events-none rounded-full"></div>
+    <div id="glowOrb2" class="fixed bottom-0 left-1/4 w-96 h-96 bg-yellow-500/5 blur-[120px] pointer-events-none rounded-full"></div>
 
     <!-- Navigation Bar -->
     <nav class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/80 border-b border-amber-500/20 px-4 py-3">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
             <!-- Secret Admin Trigger: Click Logo 15 times to open Admin Login -->
             <div class="flex items-center gap-3 cursor-pointer select-none" onclick="triggerSecretAdmin()">
-                <div class="w-10 h-10 rounded-full gold-bg p-0.5 shadow-lg shadow-amber-500/20">
-                    <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
-                        <i class="fa-solid fa-cross text-amber-400 text-lg"></i>
+                <div class="w-10 h-10 rounded-full gold-bg p-0.5 shadow-lg shadow-amber-500/20 flex items-center justify-center">
+                    <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center" id="navIconWrapper">
+                        <i id="navLogoIcon" class="fa-solid fa-cross text-amber-400 text-lg"></i>
                     </div>
                 </div>
                 <div>
-                    <h1 class="font-serif-title font-bold text-lg gold-gradient tracking-wide leading-none">JESUS SAVES TODAY</h1>
-                    <p class="text-[10px] text-amber-200/60 font-medium tracking-wider uppercase mt-0.5">International Ministry & Store</p>
+                    <h1 id="brandTitle" class="font-serif-title font-bold text-lg gold-gradient tracking-wide leading-none">JESUS SAVES TODAY</h1>
+                    <p id="brandSubtitle" class="text-[10px] text-amber-200/60 font-medium tracking-wider uppercase mt-0.5">International Ministry & Store</p>
                 </div>
             </div>
 
             <!-- Public Header Right -->
             <div class="flex items-center gap-2">
-                <span class="text-xs font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                <span id="headerBadge" class="text-xs font-semibold text-amber-300 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-full flex items-center gap-1.5">
                     <i class="fa-solid fa-shield-halved text-amber-400"></i> Official Store
                 </span>
             </div>
@@ -105,13 +116,13 @@
             
             <!-- Hero Header Section -->
             <div class="text-center space-y-3 pt-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-medium">
-                    <i class="fa-solid fa-heart text-red-400"></i> 60,000+ Faithful Followers Across USA, Europe & Asia
+                <div id="heroBadgeWrapper" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-medium">
+                    <i class="fa-solid fa-heart text-red-400"></i> <span id="heroBadgeText">60,000+ Faithful Followers Across USA, Europe & Asia</span>
                 </div>
-                <h2 class="font-serif-title text-3xl sm:text-5xl font-black tracking-tight text-white">
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-black tracking-tight text-white" id="heroTitleText">
                     Faith, Hope & <span class="gold-gradient">Luxury Inspiration</span>
                 </h2>
-                <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                <p id="heroSubtitleText" class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
                     Explore curated blessed items, sacred jewelry, Christian lifestyle products, and faith education tools for your family.
                 </p>
             </div>
@@ -125,9 +136,9 @@
                             <i class="fa-brands fa-telegram"></i>
                         </div>
                         <div>
-                            <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-sky-500/20 text-sky-300 border border-sky-500/30 mb-1">Official Community</span>
-                            <h3 class="text-lg font-bold text-white leading-tight">Join Our Official Telegram Ecosystem</h3>
-                            <p class="text-xs text-slate-400 mt-1">Get instant updates whenever we publish new YouTube songs & faith videos!</p>
+                            <span id="tgBannerTag" class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-sky-500/20 text-sky-300 border border-sky-500/30 mb-1">Official Community</span>
+                            <h3 id="tgBannerTitle" class="text-lg font-bold text-white leading-tight">Join Our Official Telegram Ecosystem</h3>
+                            <p id="tgBannerSub" class="text-xs text-slate-400 mt-1">Get instant updates whenever we publish new YouTube songs & faith videos!</p>
                         </div>
                     </div>
                     <div class="flex flex-wrap sm:flex-nowrap gap-2.5 w-full md:w-auto">
@@ -200,7 +211,7 @@
                     </div>
                     <div>
                         <h3 class="font-serif-title text-2xl font-bold text-white">Private Admin Access</h3>
-                        <p class="text-xs text-slate-400 mt-1">Enter secret password to manage affiliate links.</p>
+                        <p class="text-xs text-slate-400 mt-1">Enter secret password to manage affiliate links & theme customization.</p>
                     </div>
                     <form onsubmit="handleAdminLogin(event)" class="space-y-3 pt-2">
                         <input type="password" id="adminPassInput" placeholder="Enter Secret Passcode" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-center text-white text-sm focus:outline-none focus:border-amber-500">
@@ -217,9 +228,9 @@
                 <div class="flex flex-wrap items-center justify-between gap-4 glass-card p-4 rounded-xl border-amber-500/30">
                     <div>
                         <h3 class="font-serif-title text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-sliders text-amber-400"></i> Secret Affiliate CMS
+                            <i class="fa-solid fa-sliders text-amber-400"></i> Secret Affiliate CMS & Visual Theme Manager
                         </h3>
-                        <p class="text-xs text-slate-400">Manage links, photos, pricing, e-commerce platforms, and Telegram channels.</p>
+                        <p class="text-xs text-slate-400">Customize 100% of the site's layout, colors, branding, regional Shopee branches, categories, products, and links without code.</p>
                     </div>
                     <div class="flex items-center gap-2">
                         <button onclick="exportJSON()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5">
@@ -232,6 +243,86 @@
                             <i class="fa-solid fa-lock"></i> Lock Panel
                         </button>
                     </div>
+                </div>
+
+                <!-- ================= VISUAL THEME & BRANDING MANAGER ================= -->
+                <div class="glass-card p-5 sm:p-6 rounded-2xl border-purple-500/30 space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h4 class="text-base font-bold text-purple-400 flex items-center gap-2">
+                            <i class="fa-solid fa-palette"></i> 100% Visual Theme & Branding Manager
+                        </h4>
+                        <button onclick="resetThemeToDefault()" class="text-xs text-slate-400 hover:text-amber-400 underline">
+                            Reset to Default Theme
+                        </button>
+                    </div>
+
+                    <!-- 1-Click Luxury Theme Presets -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-2">Instant Luxury Theme Presets:</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <button onclick="applyPresetTheme('royalGold')" class="p-3 rounded-xl bg-slate-900 border border-amber-500/40 text-left hover:border-amber-400 transition">
+                                <div class="w-full h-4 rounded bg-gradient-to-r from-amber-600 via-yellow-200 to-amber-700 mb-1.5"></div>
+                                <div class="text-xs font-bold text-amber-300">Royal Gold & Dark</div>
+                            </button>
+                            <button onclick="applyPresetTheme('emeraldLuxury')" class="p-3 rounded-xl bg-slate-900 border border-emerald-500/40 text-left hover:border-emerald-400 transition">
+                                <div class="w-full h-4 rounded bg-gradient-to-r from-emerald-600 via-teal-200 to-emerald-800 mb-1.5"></div>
+                                <div class="text-xs font-bold text-emerald-300">Emerald & Diamond</div>
+                            </button>
+                            <button onclick="applyPresetTheme('midnightSapphire')" class="p-3 rounded-xl bg-slate-900 border border-sky-500/40 text-left hover:border-sky-400 transition">
+                                <div class="w-full h-4 rounded bg-gradient-to-r from-sky-600 via-cyan-200 to-blue-800 mb-1.5"></div>
+                                <div class="text-xs font-bold text-sky-300">Midnight Sapphire</div>
+                            </button>
+                            <button onclick="applyPresetTheme('pureIvory')" class="p-3 rounded-xl bg-slate-900 border border-rose-300/40 text-left hover:border-rose-300 transition">
+                                <div class="w-full h-4 rounded bg-gradient-to-r from-amber-200 via-rose-100 to-yellow-100 mb-1.5"></div>
+                                <div class="text-xs font-bold text-rose-200">Pure Ivory (Light)</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Branding & Text Configuration -->
+                    <form onsubmit="saveBrandingConfig(event)" class="space-y-4 pt-2">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Brand Name / Ministry Title *</label>
+                                <input type="text" id="cfgBrandTitle" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Brand Subtitle / Niche Tag *</label>
+                                <input type="text" id="cfgBrandSubtitle" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Header Icon Style</label>
+                                <select id="cfgNavIcon" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                                    <option value="fa-cross">Cross (Christian / Ministry)</option>
+                                    <option value="fa-gem">Gem / Diamond (Luxury Goods)</option>
+                                    <option value="fa-crown">Crown (Royal / Premium)</option>
+                                    <option value="fa-heart">Heart (Love / Lifestyle)</option>
+                                    <option value="fa-star">Star (Featured / Celebrity)</option>
+                                    <option value="fa-bag-shopping">Shopping Bag (Store)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Hero Title Heading</label>
+                                <input type="text" id="cfgHeroTitle" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Hero Badge Text</label>
+                                <input type="text" id="cfgHeroBadge" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Hero Description Text</label>
+                            <textarea id="cfgHeroSubtitle" rows="2" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"></textarea>
+                        </div>
+
+                        <button type="submit" class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-xl transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Branding & Text Settings
+                        </button>
+                    </form>
                 </div>
 
                 <!-- Admin Passcode Change Box -->
@@ -247,24 +338,44 @@
                     </div>
                 </div>
 
-                <!-- Custom Dynamic E-Commerce Platform Management Box -->
-                <div class="glass-card p-5 rounded-2xl border-emerald-500/30 space-y-4">
-                    <h4 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
-                        <i class="fa-solid fa-store"></i> Dynamic E-Commerce Platforms Management
+                <!-- DYNAMIC CATEGORIES MANAGEMENT BOX -->
+                <div class="glass-card p-5 rounded-2xl border-amber-500/30 space-y-4">
+                    <h4 class="text-sm font-bold text-amber-400 flex items-center gap-2">
+                        <i class="fa-solid fa-tags"></i> Dynamic Categories Management
                     </h4>
-                    <p class="text-xs text-slate-400">Add new retail platforms (e.g., TikTok Shop, Tokopedia, Blibli) without editing code. They will automatically appear in product dropdowns and store filters.</p>
+                    <p class="text-xs text-slate-400">Add custom product categories (e.g. Faith Apparel, Wall Art, Luxury Watches) without touching any code.</p>
                     
-                    <form onsubmit="addNewPlatform(event)" class="flex flex-col sm:flex-row gap-3">
-                        <input type="text" id="newPlatformNameInput" required placeholder="Platform Name (e.g. TikTok Shop)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
-                        <button type="submit" class="px-4 py-2 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-plus"></i> Add Platform
+                    <form onsubmit="addNewCategory(event)" class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="newCategoryNameInput" required placeholder="Category Name (e.g. Faith Apparel)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                        <button type="submit" class="px-4 py-2 bg-amber-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-amber-400 transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Add Category
                         </button>
                     </form>
 
                     <div>
-                        <div class="text-xs font-semibold text-slate-300 mb-2">Current Available Platforms:</div>
+                        <div class="text-xs font-semibold text-slate-300 mb-2">Current Product Categories:</div>
+                        <div id="adminCategoriesList" class="flex flex-wrap gap-2">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Dynamic E-Commerce Platform Management Box -->
+                <div class="glass-card p-5 rounded-2xl border-emerald-500/30 space-y-4">
+                    <h4 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-store"></i> Dynamic E-Commerce & Regional Branch Management
+                    </h4>
+                    <p class="text-xs text-slate-400">Add new retail platforms or regional sub-branches (e.g. Shopee ID, Shopee MX, Shopee PH, TikTok Shop) without editing code.</p>
+                    
+                    <form onsubmit="addNewPlatform(event)" class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="newPlatformNameInput" required placeholder="Platform/Branch Name (e.g. Shopee MX)" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                        <button type="submit" class="px-4 py-2 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Add Platform / Branch
+                        </button>
+                    </form>
+
+                    <div>
+                        <div class="text-xs font-semibold text-slate-300 mb-2">Current Available Retailers & Sub-Branches:</div>
                         <div id="adminPlatformsList" class="flex flex-wrap gap-2">
-                            <!-- Rendered by JS -->
                         </div>
                     </div>
                 </div>
@@ -309,18 +420,13 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-300 mb-1">Marketplace / Retailer *</label>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Marketplace / Sub-Branch *</label>
                                 <select id="prodPlatform" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
-                                    <!-- Options rendered dynamically -->
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold text-slate-300 mb-1">Category *</label>
                                 <select id="prodCategory" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
-                                    <option value="jewelry">Faith & Luxury Jewelry</option>
-                                    <option value="kids">Kids & Family Collection</option>
-                                    <option value="home">Home & Faith Decor</option>
-                                    <option value="bibles">Bibles & Devotionals</option>
                                 </select>
                             </div>
                             <div>
@@ -398,7 +504,7 @@
     <!-- Footer -->
     <footer class="mt-16 border-t border-slate-800/80 pt-8 pb-12 text-center text-xs text-slate-500">
         <div class="max-w-5xl mx-auto px-4 space-y-2">
-            <p class="font-serif-title text-slate-400 font-semibold cursor-pointer" onclick="triggerSecretAdmin()">JESUS SAVES TODAY MINISTRY & AFFILIATE HUB</p>
+            <p id="footerBrandTitle" class="font-serif-title text-slate-400 font-semibold cursor-pointer" onclick="triggerSecretAdmin()">JESUS SAVES TODAY MINISTRY & AFFILIATE HUB</p>
             <p>Spreading the Gospel & Faith worldwide across US, Europe, and Asia.</p>
             <p class="text-[10px] text-slate-600">Designed for Involve Asia & International Bio Link Conversion.</p>
         </div>
@@ -424,14 +530,14 @@
                 id: 2,
                 title: "Children's Illustrated Bible Story Book (Hardcover)",
                 category: "kids",
-                platform: "shopee",
+                platform: "shopee-id",
                 price: "$18.50",
                 originalPrice: "$29.00",
                 badge: "Free Worldwide Shipping",
                 rating: "5.0",
                 reviews: "890",
                 image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
-                affiliateUrl: "https://shopee.com"
+                affiliateUrl: "https://shopee.co.id"
             },
             {
                 id: 3,
@@ -463,14 +569,14 @@
                 id: 5,
                 title: "Sterling Silver Mustard Seed Faith Bracelet",
                 category: "jewelry",
-                platform: "ali-express",
+                platform: "shopee-mx",
                 price: "$22.90",
                 originalPrice: "$45.00",
                 badge: "Free Worldwide Shipping",
                 rating: "4.7",
                 reviews: "670",
                 image: "https://images.unsplash.com/photo-1611591475179-425687a76365?w=600&auto=format&fit=crop&q=80",
-                affiliateUrl: "https://www.aliexpress.com"
+                affiliateUrl: "https://shopee.com.mx"
             },
             {
                 id: 6,
@@ -491,14 +597,72 @@
             { id: 'all', name: 'All Retailers', icon: 'fa-globe', isDefault: true },
             { id: 'amazon', name: 'Amazon', icon: 'fa-amazon', isDefault: true },
             { id: 'ali-express', name: 'AliExpress', icon: 'fa-shopping-bag', isDefault: true },
-            { id: 'shopee', name: 'Shopee', icon: 'fa-bag-shopping', isDefault: true },
+            { id: 'shopee-id', name: 'Shopee ID', icon: 'fa-bag-shopping', isDefault: true },
+            { id: 'shopee-mx', name: 'Shopee MX', icon: 'fa-bag-shopping', isDefault: true },
+            { id: 'shopee-ph', name: 'Shopee PH', icon: 'fa-bag-shopping', isDefault: true },
             { id: 'lazada', name: 'Lazada', icon: 'fa-store', isDefault: true },
             { id: 'ebay', name: 'eBay', icon: 'fa-tag', isDefault: true },
             { id: 'etsy', name: 'Etsy', icon: 'fa-gem', isDefault: true }
         ];
 
+        const initialCategories = [
+            { id: 'all', name: 'All Categories', isDefault: true },
+            { id: 'jewelry', name: 'Faith Jewelry', isDefault: true },
+            { id: 'kids', name: 'Kids & Family', isDefault: true },
+            { id: 'home', name: 'Home & Decor', isDefault: true },
+            { id: 'bibles', name: 'Bibles & Books', isDefault: true }
+        ];
+
+        const defaultBranding = {
+            title: "JESUS SAVES TODAY",
+            subtitle: "International Ministry & Store",
+            icon: "fa-cross",
+            heroTitle: "Faith, Hope & Luxury Inspiration",
+            heroBadge: "60,000+ Faithful Followers Across USA, Europe & Asia",
+            heroSubtitle: "Explore curated blessed items, sacred jewelry, Christian lifestyle products, and faith education tools for your family.",
+            themePreset: "royalGold"
+        };
+
+        const themePresets = {
+            royalGold: {
+                bgColor: "#090a0f",
+                textColor: "#f3f4f6",
+                accentGradient: "linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 70%, #aa771c 100%)",
+                accentColor: "#d4af37",
+                cardBg: "rgba(22, 27, 38, 0.75)",
+                cardBorder: "rgba(212, 175, 55, 0.2)"
+            },
+            emeraldLuxury: {
+                bgColor: "#06130e",
+                textColor: "#f0fdf4",
+                accentGradient: "linear-gradient(135deg, #10b981 0%, #a7f3d0 30%, #047857 70%, #065f46 100%)",
+                accentColor: "#10b981",
+                cardBg: "rgba(15, 35, 27, 0.75)",
+                cardBorder: "rgba(16, 185, 129, 0.25)"
+            },
+            midnightSapphire: {
+                bgColor: "#070d18",
+                textColor: "#f0f9ff",
+                accentGradient: "linear-gradient(135deg, #0ea5e9 0%, #bae6fd 30%, #0369a1 70%, #075985 100%)",
+                accentColor: "#0ea5e9",
+                cardBg: "rgba(15, 28, 48, 0.75)",
+                cardBorder: "rgba(14, 165, 233, 0.25)"
+            },
+            pureIvory: {
+                bgColor: "#faf8f5",
+                textColor: "#1c1917",
+                accentGradient: "linear-gradient(135deg, #d97706 0%, #fef3c7 30%, #b45309 70%, #92400e 100%)",
+                accentColor: "#d97706",
+                cardBg: "rgba(255, 255, 255, 0.85)",
+                cardBorder: "rgba(217, 119, 6, 0.2)"
+            }
+        };
+
         let products = [];
         let platforms = [];
+        let categoriesList = [];
+        let branding = { ...defaultBranding };
+
         let selectedPlatform = 'all';
         let selectedCategory = 'all';
         let searchQuery = '';
@@ -509,16 +673,9 @@
         let logoClickCount = 0;
         let logoClickTimer = null;
 
-        const categories = [
-            { id: 'all', name: 'All Categories' },
-            { id: 'jewelry', name: 'Faith Jewelry' },
-            { id: 'kids', name: 'Kids & Family' },
-            { id: 'home', name: 'Home & Decor' },
-            { id: 'bibles', name: 'Bibles & Books' }
-        ];
-
         window.addEventListener('DOMContentLoaded', () => {
             loadLocalStorageData();
+            applyBrandingUI();
             checkUrlAdminTrigger();
             renderFilters();
             renderProducts();
@@ -526,7 +683,6 @@
             lucide.createIcons();
         });
 
-        // Secret Admin Trigger via Clicking Logo 15 times
         function triggerSecretAdmin() {
             logoClickCount++;
             clearTimeout(logoClickTimer);
@@ -547,20 +703,16 @@
 
         function loadLocalStorageData() {
             const storedProds = localStorage.getItem('jst_products');
-            if (storedProds) {
-                products = JSON.parse(storedProds);
-            } else {
-                products = [...initialProducts];
-                saveProductsToStorage();
-            }
+            products = storedProds ? JSON.parse(storedProds) : [...initialProducts];
 
             const storedPlatforms = localStorage.getItem('jst_platforms');
-            if (storedPlatforms) {
-                platforms = JSON.parse(storedPlatforms);
-            } else {
-                platforms = [...initialPlatforms];
-                savePlatformsToStorage();
-            }
+            platforms = storedPlatforms ? JSON.parse(storedPlatforms) : [...initialPlatforms];
+
+            const storedCategories = localStorage.getItem('jst_categories');
+            categoriesList = storedCategories ? JSON.parse(storedCategories) : [...initialCategories];
+
+            const storedBranding = localStorage.getItem('jst_branding');
+            branding = storedBranding ? JSON.parse(storedBranding) : { ...defaultBranding };
 
             const storedTgChannel = localStorage.getItem('jst_tg_channel');
             if (storedTgChannel) telegramChannel = storedTgChannel;
@@ -572,12 +724,61 @@
             if (storedPass) adminPasscode = storedPass;
         }
 
-        function saveProductsToStorage() {
-            localStorage.setItem('jst_products', JSON.stringify(products));
+        function saveProductsToStorage() { localStorage.setItem('jst_products', JSON.stringify(products)); }
+        function savePlatformsToStorage() { localStorage.setItem('jst_platforms', JSON.stringify(platforms)); }
+        function saveCategoriesToStorage() { localStorage.setItem('jst_categories', JSON.stringify(categoriesList)); }
+        function saveBrandingToStorage() { localStorage.setItem('jst_branding', JSON.stringify(branding)); }
+
+        function applyBrandingUI() {
+            document.title = `${branding.title} | Bio Link & Multi-Affiliate Hub`;
+            document.getElementById('brandTitle').innerText = branding.title;
+            document.getElementById('brandSubtitle').innerText = branding.subtitle;
+            document.getElementById('footerBrandTitle').innerText = `${branding.title} MINISTRY & AFFILIATE HUB`;
+
+            document.getElementById('navLogoIcon').className = `fa-solid ${branding.icon} text-amber-400 text-lg`;
+            document.getElementById('heroBadgeText').innerText = branding.heroBadge;
+            document.getElementById('heroTitleText').innerHTML = branding.heroTitle;
+            document.getElementById('heroSubtitleText').innerText = branding.heroSubtitle;
+
+            const theme = themePresets[branding.themePreset] || themePresets.royalGold;
+            const styleElem = document.getElementById('dynamicThemeStyles');
+            styleElem.innerHTML = `
+                @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+                :root {
+                    --bg-color: ${theme.bgColor};
+                    --text-color: ${theme.textColor};
+                    --accent-gradient: ${theme.accentGradient};
+                    --accent-color: ${theme.accentColor};
+                    --card-bg: ${theme.cardBg};
+                    --card-border: ${theme.cardBorder};
+                }
+                body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+                .font-serif-title { font-family: 'Cinzel', serif; }
+                .gold-gradient { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+                .gold-bg { background: var(--accent-gradient); }
+                .glass-card { background: var(--card-bg); backdrop-filter: blur(16px); border: 1px solid var(--card-border); transition: all 0.3s ease; }
+                .glass-card:hover { border-color: var(--accent-color); box-shadow: 0 8px 32px 0 rgba(191, 149, 63, 0.15); }
+                .active-tab { background: var(--accent-gradient); color: #000; font-weight: 700; }
+            `;
         }
 
-        function savePlatformsToStorage() {
-            localStorage.setItem('jst_platforms', JSON.stringify(platforms));
+        function applyPresetTheme(presetKey) {
+            if (themePresets[presetKey]) {
+                branding.themePreset = presetKey;
+                saveBrandingToStorage();
+                applyBrandingUI();
+                alert(`Applied "${presetKey}" theme preset successfully!`);
+            }
+        }
+
+        function resetThemeToDefault() {
+            if (confirm('Reset branding and theme to default?')) {
+                branding = { ...defaultBranding };
+                saveBrandingToStorage();
+                applyBrandingUI();
+                populateAdminBrandingInputs();
+                alert('Reset theme to default successfully!');
+            }
         }
 
         function switchView(view) {
@@ -602,38 +803,17 @@
             `).join('');
 
             const cContainer = document.getElementById('categoryFilterContainer');
-            cContainer.innerHTML = categories.map(c => `
+            cContainer.innerHTML = categoriesList.map(c => `
                 <button onclick="setCategory('${c.id}')" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${selectedCategory === c.id ? 'active-tab shadow-lg shadow-amber-500/20' : 'bg-slate-900 border border-slate-800 text-slate-400 hover:border-slate-700'}">
                     ${c.name}
                 </button>
             `).join('');
         }
 
-        function setPlatform(pId) {
-            selectedPlatform = pId;
-            renderFilters();
-            renderProducts();
-        }
-
-        function setCategory(cId) {
-            selectedCategory = cId;
-            renderFilters();
-            renderProducts();
-        }
-
-        function filterProducts() {
-            searchQuery = document.getElementById('searchInput').value.toLowerCase();
-            renderProducts();
-        }
-
-        function resetFilters() {
-            selectedPlatform = 'all';
-            selectedCategory = 'all';
-            searchQuery = '';
-            document.getElementById('searchInput').value = '';
-            renderFilters();
-            renderProducts();
-        }
+        function setPlatform(pId) { selectedPlatform = pId; renderFilters(); renderProducts(); }
+        function setCategory(cId) { selectedCategory = cId; renderFilters(); renderProducts(); }
+        function filterProducts() { searchQuery = document.getElementById('searchInput').value.toLowerCase(); renderProducts(); }
+        function resetFilters() { selectedPlatform = 'all'; selectedCategory = 'all'; searchQuery = ''; document.getElementById('searchInput').value = ''; renderFilters(); renderProducts(); }
 
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
@@ -659,7 +839,6 @@
             grid.innerHTML = filtered.map(p => `
                 <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
                     <div>
-                        <!-- Clickable Image Area -->
                         <a href="${p.affiliateUrl}" target="_blank" rel="noopener noreferrer" class="relative h-52 overflow-hidden bg-slate-950 block">
                             <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                             ${p.badge ? `<span class="absolute top-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-md shadow-md">${p.badge}</span>` : ''}
@@ -668,7 +847,6 @@
                             </span>
                         </a>
 
-                        <!-- Clickable Title & Info Area -->
                         <div class="p-4 space-y-2">
                             <div class="flex items-center gap-1 text-amber-400 text-xs">
                                 <i class="fa-solid fa-star"></i>
@@ -681,7 +859,6 @@
                         </div>
                     </div>
 
-                    <!-- Price & CTA Button -->
                     <div class="p-4 pt-0 space-y-3">
                         <div class="flex items-baseline gap-2">
                             <span class="text-lg font-black text-amber-300">${p.price}</span>
@@ -695,7 +872,7 @@
             `).join('');
         }
 
-        // --- HIDDEN ADMIN LOGIC ---
+        // --- HIDDEN ADMIN CMS LOGIC ---
         function handleAdminLogin(e) {
             e.preventDefault();
             const pass = document.getElementById('adminPassInput').value;
@@ -706,18 +883,41 @@
                 renderAdminTable();
                 renderAdminPlatformDropdown();
                 renderAdminPlatformsList();
+                renderAdminCategoryDropdown();
+                renderAdminCategoriesList();
                 populateAdminInputs();
+                populateAdminBrandingInputs();
             } else {
                 document.getElementById('loginErrorMsg').classList.remove('hidden');
             }
         }
 
+        function populateAdminBrandingInputs() {
+            document.getElementById('cfgBrandTitle').value = branding.title;
+            document.getElementById('cfgBrandSubtitle').value = branding.subtitle;
+            document.getElementById('cfgNavIcon').value = branding.icon;
+            document.getElementById('cfgHeroTitle').value = branding.heroTitle;
+            document.getElementById('cfgHeroBadge').value = branding.heroBadge;
+            document.getElementById('cfgHeroSubtitle').value = branding.heroSubtitle;
+        }
+
+        function saveBrandingConfig(e) {
+            e.preventDefault();
+            branding.title = document.getElementById('cfgBrandTitle').value;
+            branding.subtitle = document.getElementById('cfgBrandSubtitle').value;
+            branding.icon = document.getElementById('cfgNavIcon').value;
+            branding.heroTitle = document.getElementById('cfgHeroTitle').value;
+            branding.heroBadge = document.getElementById('cfgHeroBadge').value;
+            branding.heroSubtitle = document.getElementById('cfgHeroSubtitle').value;
+
+            saveBrandingToStorage();
+            applyBrandingUI();
+            alert('Branding and Text settings saved!');
+        }
+
         function changeAdminPasscode() {
             const newPass = document.getElementById('newAdminPassInput').value.trim();
-            if (newPass.length < 4) {
-                alert('Password must be at least 4 characters!');
-                return;
-            }
+            if (newPass.length < 4) { alert('Password must be at least 4 characters!'); return; }
             adminPasscode = newPass;
             localStorage.setItem('jst_admin_pass', adminPasscode);
             document.getElementById('newAdminPassInput').value = '';
@@ -736,12 +936,11 @@
             document.getElementById('adminTelegramGroupInput').value = telegramGroup;
         }
 
+        // --- PLATFORM MANAGER LOGIC ---
         function renderAdminPlatformDropdown() {
             const select = document.getElementById('prodPlatform');
             const availablePlatforms = platforms.filter(p => p.id !== 'all');
-            select.innerHTML = availablePlatforms.map(p => `
-                <option value="${p.id}">${p.name}</option>
-            `).join('');
+            select.innerHTML = availablePlatforms.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
         }
 
         function renderAdminPlatformsList() {
@@ -761,26 +960,15 @@
             if (!name) return;
 
             const id = name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+            if (platforms.some(p => p.id === id)) { alert('Platform with this name already exists!'); return; }
 
-            if (platforms.some(p => p.id === id)) {
-                alert('Platform with this name already exists!');
-                return;
-            }
-
-            const newPlatform = {
-                id: id,
-                name: name,
-                icon: 'fa-store',
-                isDefault: false
-            };
-
-            platforms.push(newPlatform);
+            platforms.push({ id: id, name: name, icon: 'fa-store', isDefault: false });
             savePlatformsToStorage();
             renderFilters();
             renderAdminPlatformDropdown();
             renderAdminPlatformsList();
             nameInput.value = '';
-            alert(`Platform "${name}" added successfully!`);
+            alert(`Platform / Sub-Branch "${name}" added successfully!`);
         }
 
         function deletePlatform(pId) {
@@ -790,6 +978,51 @@
                 renderFilters();
                 renderAdminPlatformDropdown();
                 renderAdminPlatformsList();
+            }
+        }
+
+        // --- CATEGORY MANAGER LOGIC ---
+        function renderAdminCategoryDropdown() {
+            const select = document.getElementById('prodCategory');
+            const availableCategories = categoriesList.filter(c => c.id !== 'all');
+            select.innerHTML = availableCategories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+        }
+
+        function renderAdminCategoriesList() {
+            const listContainer = document.getElementById('adminCategoriesList');
+            listContainer.innerHTML = categoriesList.filter(c => c.id !== 'all').map(c => `
+                <div class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-2">
+                    <i class="fa-solid fa-tag text-amber-400"></i> ${c.name}
+                    ${!c.isDefault ? `<button onclick="deleteCategory('${c.id}')" class="text-red-400 hover:text-red-300 ml-1"><i class="fa-solid fa-xmark"></i></button>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function addNewCategory(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('newCategoryNameInput');
+            const name = nameInput.value.trim();
+            if (!name) return;
+
+            const id = name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+            if (categoriesList.some(c => c.id === id)) { alert('Category with this name already exists!'); return; }
+
+            categoriesList.push({ id: id, name: name, isDefault: false });
+            saveCategoriesToStorage();
+            renderFilters();
+            renderAdminCategoryDropdown();
+            renderAdminCategoriesList();
+            nameInput.value = '';
+            alert(`Category "${name}" added successfully!`);
+        }
+
+        function deleteCategory(cId) {
+            if (confirm('Are you sure you want to delete this category?')) {
+                categoriesList = categoriesList.filter(c => c.id !== cId);
+                saveCategoriesToStorage();
+                renderFilters();
+                renderAdminCategoryDropdown();
+                renderAdminCategoriesList();
             }
         }
 
@@ -900,10 +1133,11 @@
         }
 
         function exportJSON() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(products, null, 2));
+            const fullConfig = { products, platforms, categoriesList, branding, telegramChannel, telegramGroup };
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(fullConfig, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "jesus_saves_products.json");
+            downloadAnchor.setAttribute("download", "website_full_config.json");
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
